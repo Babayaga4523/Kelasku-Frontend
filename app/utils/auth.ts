@@ -1,7 +1,14 @@
 import { fetchWithAuth, getCsrf } from './api';
 
-// For production on Vercel, use environment variable; for local development use relative URLs
-const API_BASE = process.env.NEXT_PUBLIC_BACKEND_URL || '';
+// Get API base URL at runtime to ensure environment variables are loaded
+function getApiBase() {
+  if (typeof window === 'undefined') {
+    // Server-side
+    return process.env.NEXT_PUBLIC_BACKEND_URL || '';
+  }
+  // Client-side - read from process.env at runtime
+  return process.env.NEXT_PUBLIC_BACKEND_URL || '';
+}
 
 function stripBOM(text: string) {
   return text.replace(/^\uFEFF/, '');
@@ -27,7 +34,8 @@ interface AuthResponse {
 
 export async function register(name: string, email: string, password: string, password_confirmation: string) {
   await getCsrf();
-  const res = await fetch(`${API_BASE}/api/backend/register`, {
+  const apiBase = getApiBase();
+  const res = await fetch(`${apiBase}/api/backend/register`, {
     method: 'POST',
     headers: { 
       'Content-Type': 'application/json',
@@ -63,7 +71,8 @@ export async function register(name: string, email: string, password: string, pa
 export async function login(email: string, password: string) {
   // Skip CSRF token for API login since we're using token-based auth
   // await getCsrf();
-  const res = await fetch(`${API_BASE}/api/login`, {
+  const apiBase = getApiBase();
+  const res = await fetch(`${apiBase}/api/login`, {
     method: 'POST',
     headers: { 
       'Content-Type': 'application/json',
