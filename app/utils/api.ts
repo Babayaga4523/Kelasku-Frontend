@@ -1,8 +1,19 @@
-// For production on Vercel, use environment variable; for local development use relative URLs
-const API_BASE = process.env.NEXT_PUBLIC_BACKEND_URL || '';
+// Get API base URL at runtime to ensure environment variables are loaded
+export function getApiBase() {
+  if (typeof window === 'undefined') {
+    // Server-side
+    return process.env.NEXT_PUBLIC_BACKEND_URL || '';
+  }
+  // Client-side - read from process.env at runtime
+  return process.env.NEXT_PUBLIC_BACKEND_URL || '';
+}
+
+// For backwards compatibility
+const API_BASE = '';
 
 export async function getCsrf() {
-  const csrfUrl = API_BASE ? `${API_BASE}/api/sanctum/csrf-cookie` : `/api/sanctum/csrf-cookie`;
+  const apiBase = getApiBase();
+  const csrfUrl = apiBase ? `${apiBase}/api/sanctum/csrf-cookie` : `/api/sanctum/csrf-cookie`;
   const response = await fetch(csrfUrl, {
     method: 'GET',
     credentials: 'include',
@@ -58,7 +69,8 @@ export async function fetchWithAuthRaw(endpoint: string, options: RequestInit = 
     // Add /api prefix to endpoint if it doesn't already have it
     const cleanEndpoint = endpoint.startsWith('/api/') ? endpoint : `/api${endpoint.startsWith('/') ? endpoint : `/${endpoint}`}`;
 
-    const response = await fetch(`${API_BASE}${cleanEndpoint}`, {
+    const apiBase = getApiBase();
+    const response = await fetch(`${apiBase}${cleanEndpoint}`, {
       ...options,
       headers,
       credentials: 'include', // Always include credentials for session-based auth
@@ -81,7 +93,8 @@ export async function fetchWithAuthRaw(endpoint: string, options: RequestInit = 
 }
 
 export async function fetchApi(endpoint: string, options: RequestInit = {}) {
-  const response = await fetch(`${API_BASE}${endpoint}`, {
+  const apiBase = getApiBase();
+  const response = await fetch(`${apiBase}${endpoint}`, {
     ...options,
     headers: {
       'Accept': 'application/json',
