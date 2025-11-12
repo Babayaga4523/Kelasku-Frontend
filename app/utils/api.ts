@@ -1,4 +1,5 @@
-const API_BASE = ''; // Use relative URLs to go through Next.js proxy
+// For production on Vercel, use environment variable; for local development use relative URLs
+const API_BASE = process.env.NEXT_PUBLIC_BACKEND_URL || '';
 
 export async function getCsrf() {
   const response = await fetch(`/api/sanctum/csrf-cookie`, {

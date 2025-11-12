@@ -1,6 +1,7 @@
 import { fetchWithAuth, getCsrf } from './api';
 
-const API_BASE = ''; // Use relative URLs to go through Next.js proxy
+// For production on Vercel, use environment variable; for local development use relative URLs
+const API_BASE = process.env.NEXT_PUBLIC_BACKEND_URL || '';
 
 function stripBOM(text: string) {
   return text.replace(/^\uFEFF/, '');
