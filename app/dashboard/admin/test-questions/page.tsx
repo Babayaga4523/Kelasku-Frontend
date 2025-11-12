@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import Image from 'next/image';
 import { useAuthStore } from '@/app/stores/auth';
 import { fetchWithAuth } from '@/app/utils/api';
 import { getCsrf } from '@/app/utils/api';
@@ -1075,11 +1074,10 @@ function QuestionCard({ question, onEdit, onCancel, onSave, onDelete, onUpdateFi
                   {question.stimulus && (
                     <div className="border-2 border-gray-200 rounded-xl p-4 bg-gray-50">
                       <div className="relative w-full h-48">
-                        <Image
+                        <img
                           src={question.stimulus}
                           alt="Preview stimulus soal"
-                          fill
-                          className="object-contain rounded-lg"
+                          className="w-full h-full object-contain rounded-lg"
                           onError={() => {
                             setImageError(true);
                           }}

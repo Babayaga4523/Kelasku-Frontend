@@ -2,7 +2,7 @@
 
 import { useEffect, useState, useCallback, useRef } from "react";
 import { useRouter } from "next/navigation";
-import Image from 'next/image';
+// use native <img> for externally hosted avatars to avoid Next.js image optimizer
 import { useAuthStore } from "@/app/stores/auth";
 import { fetchWithAuth } from "@/app/utils/api";
 import Link from "next/link";
@@ -244,6 +244,14 @@ export default function StudentProfilePage() {
     }
   };
 
+  // Compute avatar src: if previewUrl is absolute (http/blob) use as-is,
+  // otherwise prefix with NEXT_PUBLIC_BACKEND_URL so backend-stored images load correctly.
+  const avatarSrc = previewUrl
+    ? (previewUrl.startsWith('http') || previewUrl.startsWith('blob:')
+      ? previewUrl
+      : `${process.env.NEXT_PUBLIC_BACKEND_URL}${previewUrl}`)
+    : null;
+
   if (!user || user.role !== 'siswa') {
     return (
       <div className="min-h-screen flex items-center justify-center">
@@ -355,9 +363,10 @@ export default function StudentProfilePage() {
             <div className="bg-white/80 backdrop-blur-sm border border-blue-100 rounded-2xl p-6 shadow-xl shadow-blue-100/50">
               <div className="text-center">
                 <div className="w-24 h-24 mx-auto mb-4 rounded-2xl overflow-hidden bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center text-white text-3xl font-bold shadow-lg">
-                  {previewUrl ? (
-                    // preview or server-provided avatar
-                    <Image src={previewUrl} alt="Avatar" width={96} height={96} className="w-full h-full object-cover" />
+                  {avatarSrc ? (
+                    // preview or server-provided avatar (use native img to avoid optimizer)
+                    // eslint-disable-next-line @next/next/no-img-element
+                    <img src={avatarSrc} alt="Avatar" className="w-full h-full object-cover" />
                   ) : (
                     <div className="w-full h-full flex items-center justify-center text-white text-3xl font-bold">
                       {profile?.name?.charAt(0)?.toUpperCase() || 'S'}
