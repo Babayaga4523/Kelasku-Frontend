@@ -1,10 +1,16 @@
 // Get API base URL at runtime to ensure environment variables are loaded
 export function getApiBase() {
-  if (typeof window === 'undefined') {
-    // Server-side
-    return process.env.NEXT_PUBLIC_BACKEND_URL || '';
+  // Log untuk debug
+  const envVar = process.env.NEXT_PUBLIC_BACKEND_URL;
+  console.log('🔗 NEXT_PUBLIC_BACKEND_URL:', envVar);
+  
+  if (typeof window !== 'undefined') {
+    // Client-side - read from process.env at runtime
+    const url = process.env.NEXT_PUBLIC_BACKEND_URL || 'https://kelasku-backend-production.up.railway.app';
+    console.log('📍 Using backend URL:', url);
+    return url;
   }
-  // Client-side - read from process.env at runtime
+  // Server-side
   return process.env.NEXT_PUBLIC_BACKEND_URL || '';
 }
 
