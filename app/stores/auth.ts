@@ -1,9 +1,12 @@
 "use client";
 import { create } from 'zustand';
 import axios from 'axios';
+import { getApiBase } from '../utils/api';
 
 // Configure axios for CORS
-axios.defaults.baseURL = ''; // Use relative URLs to go through Next.js proxy
+// When running in the browser we want axios to use the runtime backend URL
+const isServerSide = typeof window === 'undefined';
+axios.defaults.baseURL = isServerSide ? '' : getApiBase();
 axios.defaults.withCredentials = true;
 axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 axios.defaults.headers.common['Accept'] = 'application/json';
