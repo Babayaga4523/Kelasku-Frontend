@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { useAuthStore } from "@/app/stores/auth";
 
@@ -9,6 +9,28 @@ export default function LoginForm() {
   const { login, isLoading, error } = useAuthStore();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  useEffect(() => {
+    // Check if already logged in
+    const token = localStorage.getItem('token') || localStorage.getItem('auth_token');
+    const userStr = localStorage.getItem('user');
+    if (token && userStr) {
+      try {
+        const user = JSON.parse(userStr);
+        if (user && user.role) {
+          if (user.role === 'admin') {
+            router.replace('/dashboard/admin');
+          } else if (user.role === 'siswa') {
+            router.replace('/dashboard/student');
+          } else {
+            router.replace('/dashboard');
+          }
+        }
+      } catch {
+        // Invalid data, stay on login
+      }
+    }
+  }, [router]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
