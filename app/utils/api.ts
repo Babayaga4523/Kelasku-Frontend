@@ -2,7 +2,8 @@
 const API_BASE = process.env.NEXT_PUBLIC_BACKEND_URL || '';
 
 export async function getCsrf() {
-  const response = await fetch(`/api/sanctum/csrf-cookie`, {
+  const csrfUrl = API_BASE ? `${API_BASE}/api/sanctum/csrf-cookie` : `/api/sanctum/csrf-cookie`;
+  const response = await fetch(csrfUrl, {
     method: 'GET',
     credentials: 'include',
     headers: {
