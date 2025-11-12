@@ -2,7 +2,6 @@
 
 import { useState, useEffect, useCallback } from 'react';
 import { useParams, useRouter } from 'next/navigation';
-import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowLeft, Edit, Trash2 } from 'lucide-react';
 import { fetchWithAuth } from '@/app/utils/api';
@@ -185,11 +184,12 @@ export default function QuestionDetailPage() {
               <div className="px-6 py-4">
                 {question.stimulus_type === 'image' ? (
                   <div className="relative w-full h-48">
-                    <Image
-                      src={`http://localhost:8000/storage/${question.stimulus}`}
+                    <img
+                      src={question.stimulus.startsWith('http') 
+                        ? question.stimulus 
+                        : `${process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:8000'}/storage/images/${question.stimulus}`}
                       alt="Question stimulus"
-                      fill
-                      className="object-contain rounded-lg"
+                      className="w-full h-full object-contain rounded-lg"
                     />
                   </div>
                 ) : (

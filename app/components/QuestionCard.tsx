@@ -1,7 +1,6 @@
 "use client";
 
 import type { Question } from "@/app/types/cbt";
-import Image from 'next/image';
 
 type QuestionCardProps = {
   question: Question;
@@ -39,7 +38,7 @@ export default function QuestionCard({
       {question.stimulus && question.stimulus_type === "image" && (
         <div className="flex justify-center mb-6">
           {/* Handle both full URLs and relative paths */}
-          <Image
+          <img
             src={question.stimulus.startsWith('http') 
               ? question.stimulus 
               : question.stimulus.startsWith('/storage/') 
@@ -48,9 +47,7 @@ export default function QuestionCard({
                   ? `${apiBaseUrl}/storage${question.stimulus}` 
                   : `${apiBaseUrl}/storage/images/${question.stimulus}`}
             alt="Stimulus Gambar"
-            width={800}
-            height={320}
-            className="rounded-xl border border-gray-200 shadow-sm object-contain max-w-full bg-slate-50"
+            className="rounded-xl border border-gray-200 shadow-sm object-contain max-w-full bg-slate-50 max-h-80"
             onError={(e) => {
               console.error('Image failed to load:', question.stimulus);
               e.currentTarget.style.display = 'none';

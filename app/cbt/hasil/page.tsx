@@ -1,7 +1,6 @@
 "use client";
 import React, { useEffect, useState, Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
-import Image from 'next/image';
 import { fetchWithAuthRaw } from "@/app/utils/api";
 
 interface QuestionReview {
@@ -48,11 +47,9 @@ function QuestionImage({ content, alt, className }: { content?: string; alt?: st
   if (!candidates.length || !visible) return null;
   const src = candidates[idx];
   return (
-    <Image
+    <img
       src={src}
       alt={alt || ''}
-      width={460}
-      height={320}
       className={className}
       onError={() => {
         if (idx + 1 < candidates.length) setIdx((s) => s + 1);

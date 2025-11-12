@@ -1208,11 +1208,10 @@ function QuestionCard({ question, onEdit, onCancel, onSave, onDelete, onUpdateFi
                 <div className="mb-4">
                   <div className="relative w-full max-w-md mx-auto">
                     {!imageError ? (
-                      <Image
+                      <img
                         src={question.stimulus || ''}
                         alt="Stimulus"
-                        fill
-                        className="rounded-lg border border-gray-300 shadow-sm object-contain"
+                        className="w-full h-auto rounded-lg border border-gray-300 shadow-sm object-contain max-h-64"
                         onError={() => {
                           setImageError(true);
                         }}
