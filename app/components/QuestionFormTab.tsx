@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from 'react';
-import Image from 'next/image';
 import { fetchWithAuth } from '@/app/utils/api';
 import { Upload, FileText, BookOpen, Image as ImageIcon } from 'lucide-react';
 
@@ -206,11 +205,10 @@ export default function QuestionFormTab({ onQuestionCreated, onSubmit }: Questio
                   <ImageIcon className="h-4 w-4 inline-block mr-2 text-gray-500" />
                   <span className="text-sm text-gray-600">Preview:</span>
                   <div className="relative w-full h-48 mt-2">
-                    <Image
+                    <img
                       src={formData.stimulus}
                       alt="Preview stimulus soal"
-                      fill
-                      className="object-contain rounded-lg"
+                      className="w-full h-full object-contain rounded-lg"
                       onError={() => {
                         console.error('Gagal memuat gambar. Pastikan URL valid.');
                         handleInputChange('stimulus', '');
