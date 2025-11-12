@@ -136,14 +136,14 @@ export default function AdminReportsPage() {
                 </div>
               </div>
             </div>
-            <div className="flex items-center gap-4">
-              <div className="hidden md:flex items-center gap-3 px-4 py-2 bg-white/60 backdrop-blur-sm rounded-2xl border border-white/20">
+            <div className="flex flex-col sm:flex-row sm:items-center gap-4">
+              <div className="flex items-center gap-3 px-4 py-2 bg-white/60 backdrop-blur-sm rounded-2xl border border-white/20">
                 <div className="w-3 h-3 bg-green-500 rounded-full"></div>
                 <span className="text-sm font-medium text-gray-700">Sistem Aktif</span>
               </div>
               <Link
                 href="/dashboard/admin"
-                className="group inline-flex items-center px-6 py-3 rounded-2xl bg-gradient-to-r from-blue-500 to-purple-600 text-white font-semibold hover:from-blue-600 hover:to-purple-700 transition-all duration-300 shadow-xl hover:shadow-2xl hover:shadow-purple-500/25 transform hover:-translate-y-0.5"
+                className="group inline-flex items-center justify-center px-6 py-3 rounded-2xl bg-gradient-to-r from-blue-500 to-purple-600 text-white font-semibold hover:from-blue-600 hover:to-purple-700 transition-all duration-300 shadow-xl hover:shadow-2xl hover:shadow-purple-500/25 transform hover:-translate-y-0.5"
               >
                 <svg className="w-5 h-5 mr-2 group-hover:-translate-x-1 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
@@ -345,14 +345,14 @@ export default function AdminReportsPage() {
                     <div key={stat.test_id} className="group relative bg-white/60 backdrop-blur-sm border border-white/50 rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
                       <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-purple-500/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                       <div className="relative z-10">
-                        <div className="flex items-start justify-between mb-4">
+                        <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between mb-4 space-y-3 sm:space-y-0">
                           <div className="flex items-center gap-4">
                             <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-blue-500 to-purple-500 flex items-center justify-center text-white font-bold shadow-lg">
                               {index + 1}
                             </div>
                             <div>
                               <h4 className="text-lg font-bold text-gray-900 mb-1">{stat.test_title}</h4>
-                              <div className="flex items-center gap-4 text-sm text-gray-600">
+                              <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 text-sm text-gray-600">
                                 <div className="flex items-center gap-1">
                                   <Users className="h-4 w-4 text-blue-500" />
                                   <span>{stat.attempts_count} peserta</span>
@@ -364,7 +364,7 @@ export default function AdminReportsPage() {
                               </div>
                             </div>
                           </div>
-                          <div className="text-right">
+                          <div className="text-left sm:text-right">
                             <div className="text-2xl font-bold text-gray-900 mb-1">{stat.completion_rate}%</div>
                             <div className="text-sm text-gray-600">Kelulusan</div>
                           </div>
@@ -426,7 +426,7 @@ export default function AdminReportsPage() {
                     <div key={attempt.id} className="group relative bg-white/60 backdrop-blur-sm border border-white/50 rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
                       <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/5 to-purple-500/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                       <div className="relative z-10">
-                        <div className="flex items-start justify-between mb-4">
+                        <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between mb-4 space-y-3 sm:space-y-0">
                           <div className="flex items-center gap-4">
                             <div className="relative">
                               <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-indigo-500 to-purple-500 flex items-center justify-center text-white font-bold shadow-lg">
@@ -437,7 +437,7 @@ export default function AdminReportsPage() {
                             <div>
                               <h4 className="text-lg font-bold text-gray-900 mb-1">{attempt.user_name}</h4>
                               <p className="text-sm text-gray-600 mb-2">{attempt.test_title}</p>
-                              <div className="flex items-center gap-4 text-xs text-gray-500">
+                              <div className="flex flex-wrap items-center gap-2 sm:gap-4 text-xs text-gray-500">
                                 <div className="flex items-center gap-1">
                                   <Trophy className="h-3 w-3 text-yellow-500" />
                                   <span>Skor: {attempt.score}</span>
@@ -453,7 +453,7 @@ export default function AdminReportsPage() {
                               </div>
                             </div>
                           </div>
-                          <div className="text-right">
+                          <div className="text-left sm:text-right">
                             <div className={`inline-flex items-center px-3 py-1 rounded-full text-sm font-bold mb-2 ${
                               attempt.score >= 80
                                 ? 'bg-gradient-to-r from-green-500 to-green-600 text-white'
@@ -467,7 +467,7 @@ export default function AdminReportsPage() {
                           </div>
                         </div>
 
-                        <div className="flex items-center justify-between">
+                        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between space-y-2 sm:space-y-0">
                           <div className="flex items-center gap-2 text-sm text-gray-600">
                             <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
                             <span>Diselesaikan {new Date(attempt.completed_at).toLocaleString('id-ID')}</span>

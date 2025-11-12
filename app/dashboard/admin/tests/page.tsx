@@ -102,16 +102,16 @@ export default function AdminTestsPage() {
                 <p className="text-gray-600">Kelola tes CBT dengan mudah dan efisien</p>
               </div>
             </div>
-            <div className="flex items-center gap-4">
+            <div className="flex flex-col sm:flex-row sm:items-center gap-4">
               <Link
                 href="/dashboard/admin"
-                className="text-sm text-gray-600 hidden md:inline hover:text-orange-600 transition-colors"
+                className="text-sm text-gray-600 hover:text-orange-600 transition-colors order-2 sm:order-1"
               >
                 Dashboard
               </Link>
               <Link
                 href="/dashboard/admin/tests/create"
-                className="inline-flex items-center px-6 py-3 rounded-xl bg-gradient-to-r from-blue-500 to-blue-600 text-white font-semibold hover:from-blue-600 hover:to-blue-700 transition-all duration-200 shadow-lg hover:shadow-xl"
+                className="inline-flex items-center justify-center px-6 py-3 rounded-xl bg-gradient-to-r from-blue-500 to-blue-600 text-white font-semibold hover:from-blue-600 hover:to-blue-700 transition-all duration-200 shadow-lg hover:shadow-xl order-1 sm:order-2"
               >
                 <Plus className="h-5 w-5 mr-2" />
                 Buat Tes Baru
@@ -219,12 +219,12 @@ export default function AdminTestsPage() {
             {filteredTests.map((test, index) => (
               <div key={test.id} className="group bg-white/80 backdrop-blur-sm border border-blue-100 rounded-2xl p-6 shadow-xl shadow-blue-100/50 hover:shadow-2xl hover:shadow-blue-200/50 transition-all duration-300 hover:-translate-y-1">
                 {/* Header */}
-                <div className="flex items-start justify-between mb-4">
+                <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between mb-4 space-y-3 sm:space-y-0">
                   <div className="flex items-center gap-3">
                     <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center text-white font-bold text-sm">
                       {index + 1}
                     </div>
-                    <div className="flex items-center gap-2">
+                    <div className="flex flex-col sm:flex-row sm:items-center gap-2">
                       <FileText className="h-5 w-5 text-blue-600" />
                       <span className="text-sm font-medium text-gray-700">Tes CBT</span>
                       <span className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold ${
@@ -235,7 +235,7 @@ export default function AdminTestsPage() {
                     </div>
                   </div>
 
-                  <div className="flex items-center gap-2">
+                  <div className="flex items-center gap-2 self-end sm:self-start">
                     <Link
                       href={`/dashboard/admin/tests/${test.id}/scores`}
                       className="w-9 h-9 rounded-lg bg-emerald-50 hover:bg-emerald-100 flex items-center justify-center text-emerald-600 hover:text-emerald-700 transition-colors duration-200"
@@ -280,7 +280,7 @@ export default function AdminTestsPage() {
                   </p>
 
                   {/* Stats Grid */}
-                  <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-4">
+                  <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 mb-4">
                     <div className="bg-blue-50/50 border border-blue-200 rounded-xl p-3">
                       <div className="flex items-center gap-2">
                         <Clock className="h-4 w-4 text-blue-600" />
@@ -332,7 +332,7 @@ export default function AdminTestsPage() {
                 </div>
 
                 {/* Footer */}
-                <div className="flex items-center justify-between pt-4 border-t border-gray-100">
+                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between pt-4 border-t border-gray-100 space-y-2 sm:space-y-0">
                   <div className="flex items-center gap-4 text-xs text-gray-500">
                     <span className="flex items-center gap-1">
                       <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">

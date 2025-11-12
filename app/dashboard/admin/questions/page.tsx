@@ -128,32 +128,32 @@ export default function QuestionsPage() {
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-orange-50">
       {/* Header */}
       <header className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-8 pt-8">
-        <div className="bg-white/80 backdrop-blur-sm border border-blue-100 rounded-2xl p-6 shadow-xl shadow-blue-100/50">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-6">
-              <div className="relative">
-                <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-orange-500 to-orange-600 flex items-center justify-center text-white text-2xl font-bold shadow-lg">
-                  <BookOpen className="h-8 w-8" />
+        <div className="bg-white/80 backdrop-blur-sm border border-blue-100 rounded-2xl p-4 sm:p-6 shadow-xl shadow-blue-100/50">
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+            <div className="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-6">
+              <div className="relative flex-shrink-0">
+                <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-2xl bg-gradient-to-br from-orange-500 to-orange-600 flex items-center justify-center text-white text-xl sm:text-2xl font-bold shadow-lg">
+                  <BookOpen className="h-6 w-6 sm:h-8 sm:w-8" />
                 </div>
-                <div className="absolute -bottom-1 -right-1 w-6 h-6 bg-green-500 rounded-full border-4 border-white shadow-md"></div>
+                <div className="absolute -bottom-1 -right-1 w-5 h-5 sm:w-6 sm:h-6 bg-green-500 rounded-full border-4 border-white shadow-md"></div>
               </div>
-              <div>
-                <h1 className="text-3xl font-bold text-gray-900 mb-1">Manajemen Soal</h1>
-                <p className="text-gray-700">Kelola bank soal CBT dengan mudah dan efisien</p>
+              <div className="text-center sm:text-left">
+                <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-1">Manajemen Soal</h1>
+                <p className="text-sm sm:text-base text-gray-700">Kelola bank soal CBT dengan mudah dan efisien</p>
               </div>
             </div>
-            <div className="flex items-center gap-4">
+            <div className="flex flex-col sm:flex-row items-center gap-3 sm:gap-4">
               <Link
                 href="/dashboard/admin"
-                className="text-sm text-gray-700 hidden md:inline hover:text-orange-600 transition-colors"
+                className="text-sm text-gray-700 hover:text-orange-600 transition-colors order-2 sm:order-1"
               >
                 Dashboard
               </Link>
               <Link
                 href="/dashboard/admin/questions/create"
-                className="inline-flex items-center px-6 py-3 rounded-xl bg-gradient-to-r from-orange-500 to-orange-600 text-white font-semibold hover:from-orange-600 hover:to-orange-700 transition-all duration-200 shadow-lg hover:shadow-xl"
+                className="inline-flex items-center justify-center px-4 py-2 sm:px-6 sm:py-3 rounded-xl bg-gradient-to-r from-orange-500 to-orange-600 text-white font-semibold hover:from-orange-600 hover:to-orange-700 transition-all duration-200 shadow-lg hover:shadow-xl text-sm sm:text-base order-1 sm:order-2"
               >
-                <Plus className="h-5 w-5 mr-2" />
+                <Plus className="h-4 w-4 sm:h-5 sm:w-5 mr-2" />
                 Tambah Soal Baru
               </Link>
             </div>

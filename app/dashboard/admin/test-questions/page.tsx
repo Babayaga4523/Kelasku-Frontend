@@ -461,26 +461,26 @@ export default function TestQuestionsPage() {
 
       {/* Header */}
       <header className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-8 pt-8">
-        <div className="bg-white border border-blue-100 rounded-2xl p-6 shadow-xl shadow-blue-100/50">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-6">
-              <div className="relative">
-                <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-orange-500 to-orange-600 flex items-center justify-center text-white text-2xl font-bold shadow-lg">
-                  <BookOpen className="h-8 w-8" />
+        <div className="bg-white border border-blue-100 rounded-2xl p-4 sm:p-6 shadow-xl shadow-blue-100/50">
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+            <div className="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-6">
+              <div className="relative flex-shrink-0">
+                <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-2xl bg-gradient-to-br from-orange-500 to-orange-600 flex items-center justify-center text-white text-xl sm:text-2xl font-bold shadow-lg">
+                  <BookOpen className="h-6 w-6 sm:h-8 sm:w-8" />
                 </div>
-                <div className="absolute -bottom-1 -right-1 w-6 h-6 bg-green-500 rounded-full border-4 border-white shadow-md"></div>
+                <div className="absolute -bottom-1 -right-1 w-5 h-5 sm:w-6 sm:h-6 bg-green-500 rounded-full border-4 border-white shadow-md"></div>
               </div>
-              <div>
-                <h1 className="text-3xl font-bold text-gray-900 mb-1">Manajemen Tes & Soal</h1>
-                <p className="text-gray-600">Kelola tes CBT dan soal-soalnya dengan mudah dan efisien</p>
+              <div className="text-center sm:text-left">
+                <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-1">Manajemen Tes & Soal</h1>
+                <p className="text-sm sm:text-base text-gray-600">Kelola tes CBT dan soal-soalnya dengan mudah dan efisien</p>
               </div>
             </div>
-            <div className="flex items-center gap-4">
+            <div className="flex justify-center sm:justify-end">
               <Link
                 href="/dashboard/admin"
-                className="inline-flex items-center px-6 py-3 rounded-xl bg-gradient-to-r from-gray-100 to-gray-200 text-gray-700 font-semibold hover:from-gray-200 hover:to-gray-300 transition-all duration-200 shadow-sm hover:shadow-md"
+                className="inline-flex items-center px-4 py-2 sm:px-6 sm:py-3 rounded-xl bg-gradient-to-r from-gray-100 to-gray-200 text-gray-700 font-semibold hover:from-gray-200 hover:to-gray-300 transition-all duration-200 shadow-sm hover:shadow-md text-sm sm:text-base"
               >
-                <ArrowLeft className="h-5 w-5 mr-2" />
+                <ArrowLeft className="h-4 w-4 sm:h-5 sm:w-5 mr-2" />
                 Dashboard
               </Link>
             </div>
@@ -589,21 +589,21 @@ export default function TestQuestionsPage() {
 
         {/* Search Tests */}
         <div className="mb-8">
-          <div className="bg-white border border-blue-100 rounded-2xl p-6 shadow-xl shadow-blue-100/50">
-            <div className="flex items-center gap-4">
-              <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center text-white shadow-lg">
-                <Search className="h-6 w-6" />
+          <div className="bg-white border border-blue-100 rounded-2xl p-4 sm:p-6 shadow-xl shadow-blue-100/50">
+            <div className="flex flex-col sm:flex-row sm:items-center gap-4">
+              <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-2xl bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center text-white shadow-lg flex-shrink-0">
+                <Search className="h-5 w-5 sm:h-6 sm:w-6" />
               </div>
               <div className="flex-1">
-                <h3 className="text-lg font-bold text-gray-900 mb-2">Cari Tes</h3>
+                <h3 className="text-base sm:text-lg font-bold text-gray-900 mb-2">Cari Tes</h3>
                 <div className="relative">
-                  <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 h-5 w-5" />
+                  <Search className="absolute left-3 sm:left-4 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4 sm:h-5 sm:w-5" />
                   <input
                     type="text"
                     placeholder="Cari berdasarkan judul atau deskripsi tes..."
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
-                    className="block w-full pl-12 pr-4 py-3 border-2 border-gray-200 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-all sm:text-sm bg-white text-black placeholder-black"
+                    className="block w-full pl-10 sm:pl-12 pr-4 py-2 sm:py-3 border-2 border-gray-200 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-all text-sm sm:text-sm bg-white text-black placeholder-black"
                   />
                 </div>
               </div>
@@ -669,35 +669,35 @@ export default function TestQuestionsPage() {
               <div key={test.id} className="bg-white border border-blue-100 rounded-2xl shadow-xl shadow-blue-100/50 overflow-hidden">
                 {/* Test Header */}
                 <div
-                  className="px-8 py-6 bg-gradient-to-r from-blue-50 to-orange-50 border-b border-blue-100 cursor-pointer hover:from-blue-100 hover:to-orange-100 transition-all duration-200"
+                  className="px-4 sm:px-8 py-4 sm:py-6 bg-gradient-to-r from-blue-50 to-orange-50 border-b border-blue-100 cursor-pointer hover:from-blue-100 hover:to-orange-100 transition-all duration-200"
                   onClick={() => toggleTestExpansion(test.id)}
                 >
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center space-x-6">
-                      <div className="flex items-center justify-center w-12 h-12 rounded-2xl bg-gradient-to-br from-blue-500 to-blue-600 text-white shadow-lg">
+                  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+                    <div className="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-6 min-w-0 flex-1">
+                      <div className="flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-2xl bg-gradient-to-br from-blue-500 to-blue-600 text-white shadow-lg flex-shrink-0">
                         {expandedTest === test.id ? (
-                          <ChevronDown className="h-6 w-6" />
+                          <ChevronDown className="h-5 w-5 sm:h-6 sm:w-6" />
                         ) : (
-                          <ChevronRight className="h-6 w-6" />
+                          <ChevronRight className="h-5 w-5 sm:h-6 sm:w-6" />
                         )}
                       </div>
-                      <div className="flex items-center space-x-4">
-                        <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-orange-500 to-orange-600 flex items-center justify-center text-white text-lg font-bold shadow-lg">
-                          <FileText className="h-6 w-6" />
+                      <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 min-w-0 flex-1">
+                        <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-2xl bg-gradient-to-br from-orange-500 to-orange-600 flex items-center justify-center text-white text-sm sm:text-lg font-bold shadow-lg flex-shrink-0">
+                          <FileText className="h-4 w-4 sm:h-6 sm:w-6" />
                         </div>
-                        <div>
-                          <h3 className="text-xl font-bold text-gray-900">{test.title}</h3>
-                          <p className="text-gray-600">{test.description}</p>
+                        <div className="min-w-0 flex-1">
+                          <h3 className="text-lg sm:text-xl font-bold text-gray-900 truncate">{test.title}</h3>
+                          <p className="text-sm sm:text-base text-gray-600 line-clamp-2">{test.description}</p>
                         </div>
                       </div>
                     </div>
-                    <div className="flex items-center space-x-8 text-sm">
-                      <div className="flex items-center gap-2 bg-white px-4 py-2 rounded-xl border border-blue-100">
-                        <Clock className="h-4 w-4 text-blue-600" />
+                    <div className="flex flex-wrap items-center gap-2 sm:gap-4 text-xs sm:text-sm">
+                      <div className="flex items-center gap-2 bg-white px-3 py-2 sm:px-4 rounded-xl border border-blue-100">
+                        <Clock className="h-3 w-3 sm:h-4 sm:w-4 text-blue-600" />
                         <span className="font-semibold text-gray-900">{test.duration_minutes} menit</span>
                       </div>
-                      <div className="flex items-center gap-2 bg-white px-4 py-2 rounded-xl border border-green-100">
-                        <Users className="h-4 w-4 text-green-600" />
+                      <div className="flex items-center gap-2 bg-white px-3 py-2 sm:px-4 rounded-xl border border-green-100">
+                        <Users className="h-3 w-3 sm:h-4 sm:w-4 text-green-600" />
                         <span className="font-semibold text-gray-900">{test.total_questions} soal</span>
                       </div>
                     </div>
@@ -708,24 +708,24 @@ export default function TestQuestionsPage() {
                 {expandedTest === test.id && (
                   <div className="px-8 py-6">
                     {/* Question Search and Add Button */}
-                    <div className="flex items-center justify-between mb-6">
-                      <div className="flex-1 max-w-md">
+                    <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
+                      <div className="flex-1 max-w-full sm:max-w-md">
                         <div className="relative">
-                          <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 h-5 w-5" />
+                          <Search className="absolute left-3 sm:left-4 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4 sm:h-5 sm:w-5" />
                           <input
                             type="text"
                             placeholder="Cari soal dalam tes ini..."
                             value={questionSearchTerm}
                             onChange={(e) => setQuestionSearchTerm(e.target.value)}
-                            className="block w-full pl-12 pr-4 py-3 border-2 border-gray-200 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-all sm:text-sm bg-white text-black placeholder-black"
+                            className="block w-full pl-10 sm:pl-12 pr-4 py-2 sm:py-3 border-2 border-gray-200 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-all text-sm sm:text-sm bg-white text-black placeholder-black"
                           />
                         </div>
                       </div>
                       <button
                         onClick={() => addNewQuestion(test.id)}
-                        className="inline-flex items-center px-6 py-3 ml-4 rounded-xl bg-gradient-to-r from-orange-500 to-orange-600 text-white font-semibold hover:from-orange-600 hover:to-orange-700 transition-all duration-200 shadow-lg hover:shadow-xl"
+                        className="inline-flex items-center justify-center px-4 py-2 sm:px-6 sm:py-3 rounded-xl bg-gradient-to-r from-orange-500 to-orange-600 text-white font-semibold hover:from-orange-600 hover:to-orange-700 transition-all duration-200 shadow-lg hover:shadow-xl text-sm sm:text-base"
                       >
-                        <Plus className="h-5 w-5 mr-2" />
+                        <Plus className="h-4 w-4 sm:h-5 sm:w-5 mr-2" />
                         Tambah Soal Baru
                       </button>
                     </div>
@@ -812,143 +812,149 @@ export default function TestQuestionsPage() {
 
       {/* Create Test Modal */}
       {showCreateTestModal && (
-        <div className="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full z-50">
-          <div className="relative top-20 mx-auto p-5 border w-full max-w-2xl shadow-lg rounded-md bg-white">
-            <div className="mt-3">
-              <div className="flex items-center justify-between mb-4">
-                <h3 className="text-lg font-medium text-gray-900">Buat Tes Baru</h3>
+        <div className="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full z-50 p-4">
+          <div className="relative top-4 sm:top-20 mx-auto border w-full max-w-4xl shadow-lg rounded-2xl bg-white max-h-[90vh] overflow-y-auto">
+            <div className="p-4 sm:p-6">
+              <div className="flex items-center justify-between mb-6">
+                <h3 className="text-lg sm:text-xl font-bold text-gray-900">Buat Tes Baru</h3>
                 <button
                   onClick={() => setShowCreateTestModal(false)}
-                  className="text-gray-400 hover:text-gray-600"
+                  className="text-gray-400 hover:text-gray-600 p-2 hover:bg-gray-100 rounded-full transition-colors"
                   title="Tutup modal"
                 >
-                  <X className="h-6 w-6" />
+                  <X className="h-5 w-5 sm:h-6 sm:w-6" />
                 </button>
               </div>
 
-              <div className="space-y-4">
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Judul Tes *
-                  </label>
-                  <input
-                    type="text"
-                    value={newTestData.title}
-                    onChange={(e) => setNewTestData(prev => ({ ...prev, title: e.target.value }))}
-                    className="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm text-black placeholder-black"
-                    placeholder="Masukkan judul tes"
-                    required
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Deskripsi
-                  </label>
-                  <textarea
-                    value={newTestData.description}
-                    onChange={(e) => setNewTestData(prev => ({ ...prev, description: e.target.value }))}
-                    rows={3}
-                    className="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm text-black placeholder-black"
-                    placeholder="Masukkan deskripsi tes"
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Durasi (menit) *
-                  </label>
-                  <input
-                    type="number"
-                    min="1"
-                    value={newTestData.duration_minutes}
-                    onChange={(e) => setNewTestData(prev => ({ ...prev, duration_minutes: parseInt(e.target.value) || 30 }))}
-                    className="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm text-black"
-                    title="Durasi tes dalam menit"
-                  />
-                </div>
-
-                <div className="grid grid-cols-2 gap-4">
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
-                      Tanggal Mulai
+              <div className="space-y-6">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                  <div className="lg:col-span-2">
+                    <label className="block text-sm font-semibold text-gray-700 mb-2">
+                      Judul Tes *
                     </label>
                     <input
-                      type="datetime-local"
-                      value={newTestData.start_date}
-                      onChange={(e) => setNewTestData(prev => ({ ...prev, start_date: e.target.value }))}
-                      className="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm text-black"
-                      title="Tanggal dan waktu mulai tes"
+                      type="text"
+                      value={newTestData.title}
+                      onChange={(e) => setNewTestData(prev => ({ ...prev, title: e.target.value }))}
+                      className="block w-full px-4 py-3 border-2 border-gray-200 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all text-sm sm:text-base bg-white text-black placeholder-black"
+                      placeholder="Masukkan judul tes"
+                      required
+                    />
+                  </div>
+
+                  <div className="lg:col-span-2">
+                    <label className="block text-sm font-semibold text-gray-700 mb-2">
+                      Deskripsi
+                    </label>
+                    <textarea
+                      value={newTestData.description}
+                      onChange={(e) => setNewTestData(prev => ({ ...prev, description: e.target.value }))}
+                      rows={3}
+                      className="block w-full px-4 py-3 border-2 border-gray-200 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all text-sm sm:text-base bg-white text-black placeholder-black resize-none"
+                      placeholder="Masukkan deskripsi tes"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
-                      Tanggal Selesai
+                    <label className="block text-sm font-semibold text-gray-700 mb-2">
+                      Durasi (menit) *
                     </label>
                     <input
-                      type="datetime-local"
-                      value={newTestData.end_date}
-                      onChange={(e) => setNewTestData(prev => ({ ...prev, end_date: e.target.value }))}
-                      className="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm text-black"
-                      title="Tanggal dan waktu selesai tes"
+                      type="number"
+                      min="1"
+                      value={newTestData.duration_minutes}
+                      onChange={(e) => setNewTestData(prev => ({ ...prev, duration_minutes: parseInt(e.target.value) || 30 }))}
+                      className="block w-full px-4 py-3 border-2 border-gray-200 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all text-sm sm:text-base bg-white text-black"
+                      title="Durasi tes dalam menit"
                     />
+                  </div>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                      <label className="block text-sm font-semibold text-gray-700 mb-2">
+                        Tanggal Mulai
+                      </label>
+                      <input
+                        type="datetime-local"
+                        value={newTestData.start_date}
+                        onChange={(e) => setNewTestData(prev => ({ ...prev, start_date: e.target.value }))}
+                        className="block w-full px-4 py-3 border-2 border-gray-200 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all text-sm sm:text-base bg-white text-black"
+                        title="Tanggal dan waktu mulai tes"
+                      />
+                    </div>
+
+                    <div>
+                      <label className="block text-sm font-semibold text-gray-700 mb-2">
+                        Tanggal Selesai
+                      </label>
+                      <input
+                        type="datetime-local"
+                        value={newTestData.end_date}
+                        onChange={(e) => setNewTestData(prev => ({ ...prev, end_date: e.target.value }))}
+                        className="block w-full px-4 py-3 border-2 border-gray-200 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all text-sm sm:text-base bg-white text-black"
+                        title="Tanggal dan waktu selesai tes"
+                      />
+                    </div>
                   </div>
                 </div>
 
-                <div className="space-y-3">
-                  <div className="flex items-center">
-                    <input
-                      type="checkbox"
-                      id="is_active"
-                      checked={newTestData.is_active}
-                      onChange={(e) => setNewTestData(prev => ({ ...prev, is_active: e.target.checked }))}
-                      className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
-                    />
-                    <label htmlFor="is_active" className="ml-2 block text-sm text-gray-900">
-                      Tes aktif dan dapat diakses siswa
-                    </label>
-                  </div>
+                <div className="space-y-4">
+                  <h4 className="text-base font-semibold text-gray-900">Pengaturan Tes</h4>
 
-                  <div className="flex items-center">
-                    <input
-                      type="checkbox"
-                      id="randomize_questions"
-                      checked={newTestData.randomize_questions}
-                      onChange={(e) => setNewTestData(prev => ({ ...prev, randomize_questions: e.target.checked }))}
-                      className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
-                    />
-                    <label htmlFor="randomize_questions" className="ml-2 block text-sm text-gray-900">
-                      Acak urutan soal untuk setiap siswa (mencegah contekan)
-                    </label>
-                  </div>
+                  <div className="space-y-3">
+                    <div className="flex items-center p-4 bg-gray-50 rounded-xl">
+                      <input
+                        type="checkbox"
+                        id="is_active"
+                        checked={newTestData.is_active}
+                        onChange={(e) => setNewTestData(prev => ({ ...prev, is_active: e.target.checked }))}
+                        className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
+                      />
+                      <label htmlFor="is_active" className="ml-3 block text-sm font-medium text-gray-900">
+                        Tes aktif dan dapat diakses siswa
+                      </label>
+                    </div>
 
-                  <div className="flex items-center">
-                    <input
-                      type="checkbox"
-                      id="show_results_immediately"
-                      checked={newTestData.show_results_immediately}
-                      onChange={(e) => setNewTestData(prev => ({ ...prev, show_results_immediately: e.target.checked }))}
-                      className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
-                    />
-                    <label htmlFor="show_results_immediately" className="ml-2 block text-sm text-gray-900">
-                      Tampilkan skor dan pembahasan langsung setelah tes selesai
-                    </label>
+                    <div className="flex items-center p-4 bg-gray-50 rounded-xl">
+                      <input
+                        type="checkbox"
+                        id="randomize_questions"
+                        checked={newTestData.randomize_questions}
+                        onChange={(e) => setNewTestData(prev => ({ ...prev, randomize_questions: e.target.checked }))}
+                        className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
+                      />
+                      <label htmlFor="randomize_questions" className="ml-3 block text-sm font-medium text-gray-900">
+                        Acak urutan soal untuk setiap siswa (mencegah contekan)
+                      </label>
+                    </div>
+
+                    <div className="flex items-center p-4 bg-gray-50 rounded-xl">
+                      <input
+                        type="checkbox"
+                        id="show_results_immediately"
+                        checked={newTestData.show_results_immediately}
+                        onChange={(e) => setNewTestData(prev => ({ ...prev, show_results_immediately: e.target.checked }))}
+                        className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
+                      />
+                      <label htmlFor="show_results_immediately" className="ml-3 block text-sm font-medium text-gray-900">
+                        Tampilkan skor dan pembahasan langsung setelah tes selesai
+                      </label>
+                    </div>
                   </div>
                 </div>
               </div>
 
-              <div className="flex justify-end space-x-3 mt-6">
+              <div className="flex flex-col sm:flex-row sm:justify-end gap-3 mt-8 pt-6 border-t border-gray-200">
                 <button
                   onClick={() => setShowCreateTestModal(false)}
-                  className="inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50"
+                  className="inline-flex items-center justify-center px-6 py-3 border-2 border-gray-300 text-sm font-semibold rounded-xl text-gray-700 bg-white hover:bg-gray-50 transition-all duration-200"
                 >
                   Batal
                 </button>
                 <button
                   onClick={createNewTest}
                   disabled={saving || !newTestData.title.trim()}
-                  className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 disabled:opacity-50"
+                  className="inline-flex items-center justify-center px-6 py-3 border-2 border-transparent text-sm font-semibold rounded-xl text-white bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 disabled:opacity-50 transition-all duration-200 shadow-lg hover:shadow-xl"
                 >
                   <Save className="h-4 w-4 mr-2" />
                   {saving ? 'Menyimpan...' : 'Buat Tes'}
@@ -1003,13 +1009,13 @@ function QuestionCard({ question, onEdit, onCancel, onSave, onDelete, onUpdateFi
     <div className="bg-white border border-blue-100 rounded-2xl shadow-xl shadow-blue-100/50 overflow-hidden">
       {isEditing ? (
         // Edit Mode - Enhanced form like create question page
-        <div className="p-8 space-y-6">
+        <div className="p-4 sm:p-6 lg:p-8 space-y-4 sm:space-y-6">
           {/* Stimulus Type Selection */}
           <div>
-            <label className="block text-sm font-semibold text-gray-700 mb-4">
+            <label className="block text-sm font-semibold text-gray-700 mb-3 sm:mb-4">
               Tipe Stimulus
             </label>
-            <div className="grid grid-cols-3 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4">
               {[
                 { value: 'none', label: 'Tanpa Stimulus', desc: 'Soal langsung tanpa teks atau gambar tambahan', icon: BookOpen },
                 { value: 'text', label: 'Stimulus Teks', desc: 'Soal dengan bacaan atau teks pendukung', icon: FileText },
@@ -1018,14 +1024,14 @@ function QuestionCard({ question, onEdit, onCancel, onSave, onDelete, onUpdateFi
                 <div
                   key={option.value}
                   onClick={() => onUpdateField('stimulus_type', option.value)}
-                  className={`cursor-pointer border-2 rounded-xl p-4 text-center transition-all hover:shadow-md ${
+                  className={`cursor-pointer border-2 rounded-xl p-3 sm:p-4 text-center transition-all hover:shadow-md ${
                     question.stimulus_type === option.value
                       ? 'border-orange-300 bg-gradient-to-br from-orange-50 to-orange-25 shadow-lg scale-[1.02]'
                       : 'border-gray-200 bg-white hover:border-gray-300'
                   }`}
                 >
-                  <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-gradient-to-br from-gray-100 to-gray-200 mb-3">
-                    <option.icon className={`h-6 w-6 ${
+                  <div className="inline-flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-gradient-to-br from-gray-100 to-gray-200 mb-2 sm:mb-3">
+                    <option.icon className={`h-5 w-5 sm:h-6 sm:w-6 ${
                       question.stimulus_type === option.value ? 'text-orange-600' : 'text-gray-600'
                     }`} />
                   </div>
@@ -1106,7 +1112,7 @@ function QuestionCard({ question, onEdit, onCancel, onSave, onDelete, onUpdateFi
 
           {/* Answer Options */}
           <div>
-            <label className="block text-sm font-semibold text-gray-700 mb-4">
+            <label className="block text-sm font-semibold text-gray-700 mb-3 sm:mb-4">
               Pilihan Jawaban
             </label>
             <div className="grid grid-cols-1 gap-3">
@@ -1116,7 +1122,7 @@ function QuestionCard({ question, onEdit, onCancel, onSave, onDelete, onUpdateFi
                 { key: 'option_c', label: 'C', color: 'from-yellow-500 to-yellow-600' },
                 { key: 'option_d', label: 'D', color: 'from-red-500 to-red-600' },
               ].map((option) => (
-                <div key={option.key} className="flex items-center space-x-3">
+                <div key={option.key} className="flex flex-col sm:flex-row sm:items-center space-y-2 sm:space-y-0 sm:space-x-3">
                   <div className="flex items-center space-x-3">
                     <div className={`flex-shrink-0 w-8 h-8 rounded-lg bg-gradient-to-br ${option.color} flex items-center justify-center text-white font-semibold text-sm shadow-lg`}>
                       {option.label}
@@ -1135,7 +1141,7 @@ function QuestionCard({ question, onEdit, onCancel, onSave, onDelete, onUpdateFi
                     type="text"
                     value={(question as Record<'option_a' | 'option_b' | 'option_c' | 'option_d', string>)[option.key as 'option_a' | 'option_b' | 'option_c' | 'option_d'] || ''}
                     onChange={(e) => onUpdateField(option.key, e.target.value)}
-                    className="flex-1 px-4 py-3 border-2 border-gray-200 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-all sm:text-sm bg-white text-black placeholder-black"
+                    className="flex-1 px-4 py-3 border-2 border-gray-200 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-all text-sm sm:text-base bg-white text-black placeholder-black"
                     placeholder={`Pilihan ${option.label}...`}
                   />
                 </div>
@@ -1177,39 +1183,39 @@ function QuestionCard({ question, onEdit, onCancel, onSave, onDelete, onUpdateFi
           </div>
 
           {/* Action Buttons */}
-          <div className="flex justify-end space-x-3">
+          <div className="flex flex-col sm:flex-row sm:justify-end gap-3">
             <button
               onClick={onCancel}
               disabled={saving}
-              className="inline-flex items-center px-6 py-3 rounded-xl bg-gradient-to-r from-gray-100 to-gray-200 text-gray-700 font-semibold hover:from-gray-200 hover:to-gray-300 transition-all duration-200 shadow-sm hover:shadow-md disabled:opacity-50"
+              className="inline-flex items-center justify-center px-4 py-2 sm:px-6 sm:py-3 rounded-xl bg-gradient-to-r from-gray-100 to-gray-200 text-gray-700 font-semibold hover:from-gray-200 hover:to-gray-300 transition-all duration-200 shadow-sm hover:shadow-md disabled:opacity-50 text-sm sm:text-base"
             >
-              <X className="h-5 w-5 mr-2" />
+              <X className="h-4 w-4 sm:h-5 sm:w-5 mr-2" />
               Batal
             </button>
             <button
               onClick={() => onSave(question)}
               disabled={saving}
-              className="inline-flex items-center px-6 py-3 rounded-xl bg-gradient-to-r from-green-500 to-green-600 text-white font-semibold hover:from-green-600 hover:to-green-700 transition-all duration-200 shadow-lg hover:shadow-xl disabled:opacity-50"
+              className="inline-flex items-center justify-center px-4 py-2 sm:px-6 sm:py-3 rounded-xl bg-gradient-to-r from-green-500 to-green-600 text-white font-semibold hover:from-green-600 hover:to-green-700 transition-all duration-200 shadow-lg hover:shadow-xl disabled:opacity-50 text-sm sm:text-base"
             >
-              <Save className="h-5 w-5 mr-2" />
+              <Save className="h-4 w-4 sm:h-5 sm:w-5 mr-2" />
               {saving ? 'Menyimpan...' : 'Simpan'}
             </button>
           </div>
         </div>
       ) : (
         // View Mode
-        <div className="p-8">
-          <div className="flex items-start justify-between mb-4">
-            <div className="flex-1">
+        <div className="p-4 sm:p-6 lg:p-8">
+          <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-4 mb-4">
+            <div className="flex-1 min-w-0">
               {/* Display stimulus if exists */}
               {question.stimulus_type === 'image' && question.stimulus && (
                 <div className="mb-4">
-                  <div className="relative w-full max-w-md mx-auto">
+                  <div className="relative w-full max-w-sm sm:max-w-md mx-auto lg:mx-0">
                     {!imageError ? (
                       <img
                         src={question.stimulus || ''}
                         alt="Stimulus"
-                        className="w-full h-auto rounded-lg border border-gray-300 shadow-sm object-contain max-h-64"
+                        className="w-full h-auto rounded-lg border border-gray-300 shadow-sm object-contain max-h-48 sm:max-h-64"
                         onError={() => {
                           setImageError(true);
                         }}
@@ -1229,9 +1235,9 @@ function QuestionCard({ question, onEdit, onCancel, onSave, onDelete, onUpdateFi
                 </div>
               )}
 
-              <p className="text-gray-900 font-semibold text-lg mb-4 leading-relaxed">{question.question}</p>
+              <p className="text-gray-900 font-semibold text-base sm:text-lg mb-4 leading-relaxed">{question.question}</p>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm mb-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm mb-4">
                 <div key="A" className={`p-3 rounded-lg border-2 transition-colors ${
                   question.correct_answer === 'A'
                     ? 'border-green-500 bg-green-50 text-green-900'
@@ -1276,20 +1282,20 @@ function QuestionCard({ question, onEdit, onCancel, onSave, onDelete, onUpdateFi
               )}
             </div>
 
-            <div className="flex items-center space-x-2 ml-4">
+            <div className="flex items-center gap-2 lg:ml-4 flex-shrink-0">
               <button
                 onClick={onEdit}
                 className="text-gray-600 hover:text-blue-600 p-2 rounded-md hover:bg-blue-50 transition-colors border border-transparent hover:border-blue-200"
                 title="Edit"
               >
-                <Edit className="h-4 w-4" />
+                <Edit className="h-4 w-4 sm:h-5 sm:w-5" />
               </button>
               <button
                 onClick={onDelete}
                 className="text-gray-600 hover:text-red-600 p-2 rounded-md hover:bg-red-50 transition-colors border border-transparent hover:border-red-200"
                 title="Hapus"
               >
-                <Trash2 className="h-4 w-4" />
+                <Trash2 className="h-4 w-4 sm:h-5 sm:w-5" />
               </button>
             </div>
           </div>
