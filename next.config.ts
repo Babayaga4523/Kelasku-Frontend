@@ -12,6 +12,10 @@ const nextConfig: NextConfig = {
         protocol: 'https',
         hostname: 'kelasku-backend.up.railway.app',
       },
+      {
+        protocol: 'https',
+        hostname: 'kelasku-backend-production.up.railway.app',
+      },
     ],
   },
   async rewrites() {
