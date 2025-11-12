@@ -109,61 +109,33 @@ export default function TestsPage() {
                 </Link>
               </div>
             ) : (
-              <table className="min-w-full divide-y divide-gray-200">
-                <thead className="bg-gray-50">
-                  <tr>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                      Test Details
-                    </th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                      Duration
-                    </th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                      Questions
-                    </th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                      Created
-                    </th>
-                    <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
-                      Actions
-                    </th>
-                  </tr>
-                </thead>
-                <tbody className="bg-white divide-y divide-gray-200">
+              <>
+                {/* Mobile card view */}
+                <div className="block md:hidden">
                   {tests.map((test) => (
-                    <tr key={test.id} className="hover:bg-gray-50">
-                      <td className="px-6 py-4 whitespace-nowrap">
-                        <div>
-                          <div className="text-sm font-medium text-gray-900">{test.title}</div>
+                    <div key={test.id} className="bg-white p-4 border-b border-gray-200">
+                      <div className="flex justify-between items-start">
+                        <div className="flex-1">
+                          <h3 className="text-sm font-medium text-gray-900">{test.title}</h3>
                           {test.description && (
-                            <div className="text-sm text-gray-500 truncate max-w-xs">
-                              {test.description}
-                            </div>
+                            <p className="text-sm text-gray-500 mt-1">{test.description}</p>
                           )}
+                          <div className="mt-2 text-xs text-gray-500">
+                            <p>Duration: {test.duration_minutes} min</p>
+                            <p>Questions: {test.total_questions}</p>
+                            <p>Created: {new Date(test.created_at).toLocaleDateString('id-ID')}</p>
+                          </div>
                         </div>
-                      </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                        {test.duration_minutes} minutes
-                      </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                        {test.total_questions}
-                      </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                        {new Date(test.created_at).toLocaleDateString('id-ID')}
-                      </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                        <div className="flex justify-end space-x-2">
+                        <div className="flex space-x-2 ml-4">
                           <Link
                             href={`/admin/tests/${test.id}`}
                             className="text-blue-600 hover:text-blue-900 p-1"
-                            title="View Details"
                           >
                             <Eye className="w-4 h-4" />
                           </Link>
                           <Link
                             href={`/admin/tests/${test.id}/edit`}
                             className="text-indigo-600 hover:text-indigo-900 p-1"
-                            title="Edit Test"
                           >
                             <Edit className="w-4 h-4" />
                           </Link>
@@ -175,11 +147,85 @@ export default function TestsPage() {
                             <Trash2 className="w-4 h-4" />
                           </button>
                         </div>
-                      </td>
-                    </tr>
+                      </div>
+                    </div>
                   ))}
-                </tbody>
-              </table>
+                </div>
+                {/* Desktop table view */}
+                <div className="hidden md:block">
+                  <table className="min-w-full divide-y divide-gray-200">
+                    <thead className="bg-gray-50">
+                      <tr>
+                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                          Test Details
+                        </th>
+                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                          Duration
+                        </th>
+                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                          Questions
+                        </th>
+                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                          Created
+                        </th>
+                        <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
+                          Actions
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody className="bg-white divide-y divide-gray-200">
+                      {tests.map((test) => (
+                        <tr key={test.id} className="hover:bg-gray-50">
+                          <td className="px-6 py-4 whitespace-nowrap">
+                            <div>
+                              <div className="text-sm font-medium text-gray-900">{test.title}</div>
+                              {test.description && (
+                                <div className="text-sm text-gray-500 truncate max-w-xs">
+                                  {test.description}
+                                </div>
+                              )}
+                            </div>
+                          </td>
+                          <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                            {test.duration_minutes} minutes
+                          </td>
+                          <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                            {test.total_questions}
+                          </td>
+                          <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                            {new Date(test.created_at).toLocaleDateString('id-ID')}
+                          </td>
+                          <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                            <div className="flex justify-end space-x-2">
+                              <Link
+                                href={`/admin/tests/${test.id}`}
+                                className="text-blue-600 hover:text-blue-900 p-1"
+                                title="View Details"
+                              >
+                                <Eye className="w-4 h-4" />
+                              </Link>
+                              <Link
+                                href={`/admin/tests/${test.id}/edit`}
+                                className="text-indigo-600 hover:text-indigo-900 p-1"
+                                title="Edit Test"
+                              >
+                                <Edit className="w-4 h-4" />
+                              </Link>
+                              <button
+                                onClick={() => deleteTest(test.id)}
+                                className="text-red-600 hover:text-red-900 p-1"
+                                title="Delete Test"
+                              >
+                                <Trash2 className="w-4 h-4" />
+                              </button>
+                            </div>
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </>
             )}
           </div>
         </div>

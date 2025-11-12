@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { fetchWithAuthRaw } from '@/app/utils/api';
 import { useAuthStore } from '@/app/stores/auth';
+import { ClipboardList } from 'lucide-react';
 
 interface Test {
   id: string;
@@ -56,31 +57,74 @@ export default function AdminDashboard() {
   if (error) return <div>Error loading tests: {error}</div>;
   
   return (
-    <div className="min-h-screen bg-gray-50 p-4">
-      <h1 className="text-2xl font-bold mb-4">Admin Dashboard</h1>
-      <div className="bg-white shadow rounded-lg p-4">
-        <h2 className="text-xl font-semibold mb-4">Tests</h2>
-        {tests.length === 0 ? (
-          <p>No tests available</p>
-        ) : (
-          <ul className="space-y-4">
-            {tests.map((test) => (
-              <li key={test.id} className="border-b pb-4">
-                <h3 className="font-medium">{test.title}</h3>
-                {test.description && <p className="text-gray-600">{test.description}</p>}
-                <div className="mt-2 text-sm text-gray-500">
-                  <span>Duration: {test.duration_minutes} minutes</span>
-                  <span className="mx-2">•</span>
-                  <span>Attempts: {test.total_attempts}</span>
-                  <span className="mx-2">•</span>
-                  <span>Completed: {test.completed_attempts}</span>
-                  <span className="mx-2">•</span>
-                  <span>Average Score: {Number(test.average_score ?? 0).toFixed(1)}</span>
+    <div className="space-y-6">
+      <div className="bg-white overflow-hidden shadow rounded-lg">
+        <div className="p-5">
+          <div className="flex items-center">
+            <div className="flex-shrink-0">
+              <ClipboardList className="h-6 w-6 text-gray-400" />
+            </div>
+            <div className="ml-5 w-0 flex-1">
+              <dl>
+                <dt className="text-sm font-medium text-gray-500 truncate">
+                  Total Tests
+                </dt>
+                <dd className="text-lg font-medium text-gray-900">
+                  {tests.length}
+                </dd>
+              </dl>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="bg-white shadow overflow-hidden sm:rounded-md">
+        <div className="px-4 py-5 sm:px-6">
+          <h3 className="text-lg leading-6 font-medium text-gray-900">
+            Recent Tests
+          </h3>
+          <p className="mt-1 max-w-2xl text-sm text-gray-500">
+            Overview of all CBT tests in the system.
+          </p>
+        </div>
+        <ul className="divide-y divide-gray-200">
+          {tests.length === 0 ? (
+            <li className="px-4 py-4 sm:px-6">
+              <p className="text-gray-500 text-center">No tests available</p>
+            </li>
+          ) : (
+            tests.map((test) => (
+              <li key={test.id} className="px-4 py-4 sm:px-6">
+                <div className="flex items-center justify-between">
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-center justify-between">
+                      <p className="text-sm font-medium text-indigo-600 truncate">
+                        {test.title}
+                      </p>
+                      <div className="ml-2 flex-shrink-0 flex">
+                        <p className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                          Active
+                        </p>
+                      </div>
+                    </div>
+                    {test.description && (
+                      <p className="mt-1 text-sm text-gray-600 truncate">
+                        {test.description}
+                      </p>
+                    )}
+                    <div className="mt-2 flex items-center text-sm text-gray-500">
+                      <span>Duration: {test.duration_minutes} min</span>
+                      <span className="mx-2">•</span>
+                      <span>Attempts: {test.total_attempts}</span>
+                      <span className="mx-2">•</span>
+                      <span>Avg Score: {Number(test.average_score ?? 0).toFixed(1)}%</span>
+                    </div>
+                  </div>
                 </div>
               </li>
-            ))}
-          </ul>
-        )}
+            ))
+          )}
+        </ul>
       </div>
     </div>
   );
