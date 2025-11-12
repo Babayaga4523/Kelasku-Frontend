@@ -194,18 +194,18 @@ function HasilCBTContent() {
       )}
 
       {/* Nilai & Form */}
-      <section className="w-full max-w-5xl bg-[#EAF3FF] border border-[#9BC8FF] rounded-2xl shadow p-6 flex flex-col md:flex-row gap-6 justify-between">
+      <section className="w-full max-w-5xl bg-[#EAF3FF] border border-[#9BC8FF] rounded-2xl shadow p-4 sm:p-6 flex flex-col lg:flex-row gap-4 sm:gap-6 justify-between">
         {/* Nilai CBT */}
         <div className="flex-1 text-center">
-          <h3 className="text-base font-semibold text-gray-700 tracking-wide mb-2">Nilai CBT</h3>
-          <div className="text-[72px] font-extrabold text-[#E65100] mb-1 leading-none">
+          <h3 className="text-sm sm:text-base font-semibold text-gray-700 tracking-wide mb-2">Nilai CBT</h3>
+          <div className="text-4xl sm:text-6xl lg:text-[72px] font-extrabold text-[#E65100] mb-1 leading-none">
             {loading ? "…" : Number(review?.score ?? 0).toFixed(2)}
           </div>
           
-          <p className="text-gray-700 mb-4 text-sm">
+          <p className="text-gray-700 mb-3 sm:mb-4 text-sm">
             Total nilai kamu adalah
           </p>
-          <p className="text-gray-600 mb-5 text-sm leading-tight">
+          <p className="text-gray-600 mb-4 sm:mb-5 text-xs sm:text-sm leading-tight px-2">
             {(() => {
               const score = Number(review?.score ?? 0);
               if (score >= 80) {
@@ -219,34 +219,34 @@ function HasilCBTContent() {
               }
             })()}
           </p>
-          <div className="flex justify-center gap-3">
+          <div className="flex flex-col sm:flex-row justify-center gap-2 sm:gap-3">
             {mounted ? (
               <>
                 <button
                   onClick={() => router.push(`/cbt/${review?.test_id || "latihan-1"}`)}
-                  className="bg-[#FF661F] hover:bg-[#E6540F] text-white font-semibold px-6 py-2 rounded-full transition text-sm"
+                  className="bg-[#FF661F] hover:bg-[#E6540F] text-white font-semibold px-4 sm:px-6 py-2 sm:py-2 rounded-full transition text-sm"
                 >
                   Kerjakan Ulang
                 </button>
                 <button
                   onClick={() => router.push("/dashboard/student")}
-                  className="bg-[#FFE7DE] hover:bg-[#FFDCC9] text-[#C24A12] font-semibold px-6 py-2 rounded-full transition text-sm"
+                  className="bg-[#FFE7DE] hover:bg-[#FFDCC9] text-[#C24A12] font-semibold px-4 sm:px-6 py-2 sm:py-2 rounded-full transition text-sm"
                 >
                   Kembali ke Kelas
                 </button>
               </>
             ) : (
-              <div className="space-x-3">
-                <span className="inline-block w-28 h-9 bg-gray-200 rounded-full" />
-                <span className="inline-block w-28 h-9 bg-gray-200 rounded-full" />
+              <div className="flex gap-3">
+                <span className="inline-block w-24 sm:w-28 h-8 sm:h-9 bg-gray-200 rounded-full" />
+                <span className="inline-block w-24 sm:w-28 h-8 sm:h-9 bg-gray-200 rounded-full" />
               </div>
             )}
           </div>
         </div>
 
         {/* Form Bagikan Nilai */}
-        <div className="flex-1 bg-white border border-[#9BC8FF] rounded-2xl p-6 shadow">
-          <h3 className="text-lg font-semibold text-gray-800 mb-4 text-center">
+        <div className="flex-1 bg-white border border-[#9BC8FF] rounded-2xl p-4 sm:p-6 shadow">
+          <h3 className="text-base sm:text-lg font-semibold text-gray-800 mb-3 sm:mb-4 text-center">
             Bagikan Nilai
           </h3>
           <form className="flex flex-col gap-3 text-gray-800">
@@ -257,21 +257,21 @@ function HasilCBTContent() {
                   placeholder="Masukkan nama sekolah"
                   value={schoolName}
                   onChange={(e) => setSchoolName(e.target.value)}
-                  className="placeholder:text-gray-500 border border-gray-300 rounded-lg px-4 py-2 text-sm focus:ring-2 focus:ring-blue-400 outline-none"
+                  className="placeholder:text-gray-500 border border-gray-300 rounded-lg px-3 sm:px-4 py-2 text-sm focus:ring-2 focus:ring-blue-400 outline-none"
                 />
                 <input
                   type="text"
                   placeholder="Masukkan kelas"
                   value={className}
                   onChange={(e) => setClassName(e.target.value)}
-                  className="placeholder:text-gray-500 border border-gray-300 rounded-lg px-4 py-2 text-sm focus:ring-2 focus:ring-blue-400 outline-none"
+                  className="placeholder:text-gray-500 border border-gray-300 rounded-lg px-3 sm:px-4 py-2 text-sm focus:ring-2 focus:ring-blue-400 outline-none"
                 />
                 <input
                   type="email"
                   placeholder="Masukkan alamat email"
                   value={shareEmail}
                   onChange={(e) => setShareEmail(e.target.value)}
-                  className="placeholder:text-gray-500 border border-gray-300 rounded-lg px-4 py-2 text-sm focus:ring-2 focus:ring-blue-400 outline-none"
+                  className="placeholder:text-gray-500 border border-gray-300 rounded-lg px-3 sm:px-4 py-2 text-sm focus:ring-2 focus:ring-blue-400 outline-none"
                 />
                 <div className="flex items-center gap-3">
                   <button
@@ -307,14 +307,14 @@ function HasilCBTContent() {
                   </button>
                   
                 </div>
-                {shareError && <p className="text-sm text-red-600 mt-1">{shareError}</p>}
+                {shareError && <p className="text-xs sm:text-sm text-red-600 mt-1">{shareError}</p>}
               </>
             ) : (
               <div className="space-y-2">
-                <div className="h-9 bg-gray-200 rounded-lg w-full" />
-                <div className="h-9 bg-gray-200 rounded-lg w-full" />
-                <div className="h-9 bg-gray-200 rounded-lg w-full" />
-                <div className="h-9 bg-gray-200 rounded-lg w-40" />
+                <div className="h-8 sm:h-9 bg-gray-200 rounded-lg w-full" />
+                <div className="h-8 sm:h-9 bg-gray-200 rounded-lg w-full" />
+                <div className="h-8 sm:h-9 bg-gray-200 rounded-lg w-full" />
+                <div className="h-8 sm:h-9 bg-gray-200 rounded-lg w-32 sm:w-40" />
               </div>
             )}
           </form>
@@ -323,29 +323,29 @@ function HasilCBTContent() {
 
       {/* Success modal modern and elegant */}
       {shareSuccess && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center animate-fade-in">
+        <div className="fixed inset-0 z-50 flex items-center justify-center animate-fade-in p-4">
           <div
             role="dialog"
             aria-modal="true"
-            className="relative bg-white rounded-2xl w-[400px] p-8 shadow-2xl z-10 border border-gray-100 animate-scale-in"
+            className="relative bg-white rounded-2xl w-full max-w-md p-6 sm:p-8 shadow-2xl z-10 border border-gray-100 animate-scale-in"
           >
             <button
               aria-label="Close"
               onClick={() => setShareSuccess(false)}
-              className="absolute top-4 right-4 w-10 h-10 rounded-full bg-gray-50 hover:bg-gray-100 hover:ring-2 hover:ring-gray-200 flex items-center justify-center text-gray-500 transition-all duration-200"
+              className="absolute top-4 right-4 w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-gray-50 hover:bg-gray-100 hover:ring-2 hover:ring-gray-200 flex items-center justify-center text-gray-500 transition-all duration-200"
             >
               ✕
             </button>
             <div className="flex flex-col items-center text-center">
-              <div className="w-28 h-28 rounded-full bg-[#E6F9EC] flex items-center justify-center mb-6 border-4 border-[#D1F2E0] animate-pulse-once">
-                <svg className="w-16 h-16 text-green-600" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <div className="w-20 h-20 sm:w-28 sm:h-28 rounded-full bg-[#E6F9EC] flex items-center justify-center mb-4 sm:mb-6 border-4 border-[#D1F2E0] animate-pulse-once">
+                <svg className="w-12 h-12 sm:w-16 sm:h-16 text-green-600" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M20 6L9 17L4 12" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
               </div>
-              <h3 className="text-2xl font-bold text-gray-300 mb-3 leading-tight">
+              <h3 className="text-lg sm:text-2xl font-bold text-gray-300 mb-3 leading-tight">
                 Nilai berhasil dibagikan!
               </h3>
-              <p className="text-base text-gray-500 leading-relaxed max-w-xs">
+              <p className="text-sm sm:text-base text-gray-500 leading-relaxed max-w-xs">
                 Sekarang saatnya belajar lebih giat untuk nilai yang lebih tinggi!
               </p>
             </div>
@@ -361,17 +361,17 @@ function HasilCBTContent() {
           </div>
         </div>
 
-        <div className="mt-6 bg-white border border-gray-200 rounded-2xl shadow-md p-6">
+        <div className="mt-6 bg-white border border-gray-200 rounded-2xl shadow-md p-4 sm:p-6">
           {!review?.questions || review.questions.length === 0 ? (
             <div className="text-center text-gray-500 py-10">
               Belum ada pembahasan.
             </div>
           ) : (
-            <div className="md:flex md:gap-6">
+            <div className="flex flex-col lg:flex-row lg:gap-6">
               {/* Daftar Soal */}
-              <div className="md:w-1/4 border-r pr-6">
-                <h4 className="font-semibold text-gray-700 mb-4">Daftar Soal</h4>
-                <div className="grid grid-cols-[repeat(auto-fit,minmax(40px,1fr))] gap-2 mb-4 max-w-xs">
+              <div className="lg:w-1/4 mb-6 lg:mb-0 lg:border-r lg:pr-6">
+                <h4 className="font-semibold text-gray-700 mb-4 text-center lg:text-left">Daftar Soal</h4>
+                <div className="grid grid-cols-6 sm:grid-cols-8 lg:grid-cols-2 xl:grid-cols-3 gap-2 mb-4 max-w-xs mx-auto lg:mx-0">
                   {review.questions.map((qi, i) => {
                     const isBlank = !qi.user_answer || qi.user_answer.trim() === '';
                     const cls = qi.is_correct
@@ -384,49 +384,49 @@ function HasilCBTContent() {
                         key={i}
                         onClick={() => document.getElementById(`q-${i}`)?.scrollIntoView({ behavior: 'smooth' })}
                         aria-label={`Soal ${i + 1}`}
-                        className={`w-10 h-10 rounded-md font-semibold flex items-center justify-center text-sm ${cls} hover:scale-105 transition-transform`}
+                        className={`w-8 h-8 sm:w-10 sm:h-10 rounded-md font-semibold flex items-center justify-center text-xs sm:text-sm ${cls} hover:scale-105 transition-transform`}
                       >
                         {i + 1}
                       </button>
                     );
                   })}
                 </div>
-                <div className="text-sm text-gray-600 mt-3 flex gap-4">
-                  <p>
-                    <span className="inline-block w-3 h-3 bg-green-500 rounded-sm mr-1"></span>
+                <div className="text-xs sm:text-sm text-gray-600 mt-3 flex flex-col sm:flex-row gap-2 sm:gap-4 justify-center lg:justify-start">
+                  <p className="flex items-center">
+                    <span className="inline-block w-2 h-2 bg-green-500 rounded-sm mr-1"></span>
                     Benar
                   </p>
-                  <p>
-                    <span className="inline-block w-3 h-3 bg-red-500 rounded-sm mr-1"></span>
+                  <p className="flex items-center">
+                    <span className="inline-block w-2 h-2 bg-red-500 rounded-sm mr-1"></span>
                     Salah
                   </p>
-                  <p>
-                    <span className="inline-block w-3 h-3 bg-gray-200 rounded-sm mr-1"></span>
+                  <p className="flex items-center">
+                    <span className="inline-block w-2 h-2 bg-gray-200 rounded-sm mr-1"></span>
                     Belum dijawab
                   </p>
                 </div>
               </div>
 
               {/* Isi Soal Aktif */}
-              <div className="md:col-span-3">
-                <div className="space-y-6">
+              <div className="lg:flex-1">
+                <div className="space-y-4 sm:space-y-6">
                   {review.questions.map((qq, i) => {
                     return (
-                      <div id={`q-${i}`} key={qq.id ?? i} className="rounded-xl border border-gray-200 p-6">
-                        <h4 className="font-semibold text-gray-700 mb-3">Soal No. {i + 1}</h4>
+                      <div id={`q-${i}`} key={qq.id ?? i} className="rounded-xl border border-gray-200 p-4 sm:p-6">
+                        <h4 className="font-semibold text-gray-700 mb-3 text-sm sm:text-base">Soal No. {i + 1}</h4>
                         {qq.stimulus_type === "image" && (
                           <div className="mb-4 text-center">
-                            <div className="inline-block bg-white p-3 rounded-lg border border-[#D7EAFB]">
-                              <QuestionImage content={qq.stimulus_content} alt={`Stimulus Soal ${i + 1}`} className="rounded-md mb-0 border max-h-80 w-[460px] object-contain" />
+                            <div className="inline-block bg-white p-2 sm:p-3 rounded-lg border border-[#D7EAFB]">
+                              <QuestionImage content={qq.stimulus_content} alt={`Stimulus Soal ${i + 1}`} className="rounded-md mb-0 border max-h-60 sm:max-h-80 w-full max-w-md object-contain" />
                             </div>
                           </div>
                         )}
                         {qq.stimulus_type === "text" && qq.stimulus_content && (
                           <div className="mb-4 p-3 bg-blue-50 border border-blue-200 rounded-lg">
-                            <p className="text-sm text-blue-800">{qq.stimulus_content}</p>
+                            <p className="text-xs sm:text-sm text-blue-800">{qq.stimulus_content}</p>
                           </div>
                         )}
-                        <p className="mb-4 text-gray-800 text-sm leading-relaxed">{qq.question_text}</p>
+                        <p className="mb-4 text-gray-800 text-sm sm:text-base leading-relaxed">{qq.question_text}</p>
 
                         <div className="space-y-2 mb-4">
                           {qq.options.map((opt, idx) => {
@@ -439,8 +439,8 @@ function HasilCBTContent() {
                               ? "border-red-500 bg-red-50 text-red-800"
                               : "border-gray-200";
                             return (
-                              <div key={idx} className={`flex items-start gap-2 p-3 border rounded-lg text-sm ${cls}`}>
-                                <div className="font-semibold min-w-6">{optionLetter}.</div>
+                              <div key={idx} className={`flex items-start gap-2 p-2 sm:p-3 border rounded-lg text-xs sm:text-sm ${cls}`}>
+                                <div className="font-semibold min-w-5 sm:min-w-6">{optionLetter}.</div>
                                 <div className="flex-1">{opt || 'N/A'}</div>
                               </div>
                             );
@@ -448,15 +448,15 @@ function HasilCBTContent() {
                         </div>
 
                         <div className="border-t border-gray-300 pt-3">
-                          <div className="flex items-center justify-between mb-2">
-                            <p className="font-semibold text-gray-800">Jawaban kamu : <span className="font-bold text-red-700">{qq.user_answer || "-"}</span></p>
-                            {qq.user_answer && !qq.is_correct && (<div className="text-sm text-red-700 font-semibold">✖ Jawaban kamu salah</div>)}
-                            {qq.user_answer && qq.is_correct && (<div className="text-sm text-green-700 font-semibold">✓ Jawaban kamu benar</div>)}
-                            {!qq.user_answer && (<div className="text-sm text-gray-700 font-semibold">○ Soal belum dijawab</div>)}
+                          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-2 gap-2">
+                            <p className="font-semibold text-gray-800 text-sm sm:text-base">Jawaban kamu : <span className="font-bold text-red-700">{qq.user_answer || "-"}</span></p>
+                            {qq.user_answer && !qq.is_correct && (<div className="text-xs sm:text-sm text-red-700 font-semibold">✖ Jawaban kamu salah</div>)}
+                            {qq.user_answer && qq.is_correct && (<div className="text-xs sm:text-sm text-green-700 font-semibold">✓ Jawaban kamu benar</div>)}
+                            {!qq.user_answer && (<div className="text-xs sm:text-sm text-gray-700 font-semibold">○ Soal belum dijawab</div>)}
                           </div>
 
-                          <p className="font-semibold text-gray-800 mb-1 mt-2">Kunci Jawaban : <span className="font-bold text-green-700">{qq.correct_answer || "-"}</span></p>
-                          <p className="text-sm text-gray-700 leading-relaxed whitespace-pre-line mt-3">{qq.explanation || "Pembahasan tidak tersedia."}</p>
+                          <p className="font-semibold text-gray-800 mb-1 mt-2 text-sm sm:text-base">Kunci Jawaban : <span className="font-bold text-green-700">{qq.correct_answer || "-"}</span></p>
+                          <p className="text-xs sm:text-sm text-gray-700 leading-relaxed whitespace-pre-line mt-3">{qq.explanation || "Pembahasan tidak tersedia."}</p>
                         </div>
                       </div>
                     );

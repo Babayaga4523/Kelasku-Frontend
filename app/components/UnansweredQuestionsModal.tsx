@@ -12,8 +12,8 @@ export default function UnansweredQuestionsModal({ open, unansweredQuestions, on
   if (!open) return null;
 
   return (
-    <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50" role="dialog" aria-modal="true">
-      <div className="bg-white rounded-2xl p-6 w-[400px] shadow-lg border border-gray-200">
+    <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4" role="dialog" aria-modal="true">
+      <div className="bg-white rounded-2xl p-4 sm:p-6 w-full max-w-md shadow-lg border border-gray-200">
         <div className="flex items-start justify-between mb-4">
           <h3 className="text-lg font-semibold text-gray-800">Peringatan</h3>
           <button onClick={onClose} aria-label="Tutup" className="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center text-gray-600 hover:bg-gray-200">
@@ -21,8 +21,8 @@ export default function UnansweredQuestionsModal({ open, unansweredQuestions, on
           </button>
         </div>
 
-        <div className="mb-6">
-          <p className="text-gray-700 mb-3">
+        <div className="mb-4 sm:mb-6">
+          <p className="text-gray-700 mb-3 text-sm sm:text-base">
             Anda masih memiliki soal yang belum dijawab. Apakah Anda yakin ingin mengumpulkan jawaban?
           </p>
           {unansweredQuestions.length > 0 && (
@@ -39,16 +39,16 @@ export default function UnansweredQuestionsModal({ open, unansweredQuestions, on
           )}
         </div>
 
-        <div className="flex gap-3">
+        <div className="flex flex-col sm:flex-row gap-3">
           <button
             onClick={onClose}
-            className="flex-1 px-4 py-2 bg-gray-200 text-gray-700 rounded-lg font-medium hover:bg-gray-300 transition"
+            className="flex-1 px-4 py-2 bg-gray-200 text-gray-700 rounded-lg font-medium hover:bg-gray-300 transition text-sm sm:text-base"
           >
             Kembali
           </button>
           <button
             onClick={onConfirm}
-            className="flex-1 px-4 py-2 bg-[#24B26B] text-white rounded-lg font-medium hover:bg-[#1A8E56] transition"
+            className="flex-1 px-4 py-2 bg-[#24B26B] text-white rounded-lg font-medium hover:bg-[#1A8E56] transition text-sm sm:text-base"
           >
             Kumpulkan Sekarang
           </button>

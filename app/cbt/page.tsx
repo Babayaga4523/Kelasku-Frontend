@@ -47,27 +47,27 @@ export default function TestListPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-100 p-8">
-      <div className="flex justify-between items-center mb-8">
-        <h1 className="text-3xl font-bold">Available Tests</h1>
+    <div className="min-h-screen bg-gray-100 p-4 sm:p-8">
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 sm:mb-8 gap-4">
+        <h1 className="text-2xl sm:text-3xl font-bold">Available Tests</h1>
         <Link href="/">
-          <button className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition">
+          <button className="w-full sm:w-auto bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition">
             Home
           </button>
         </Link>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
         {tests.map((test) => (
-          <div key={test.id} className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
-            <div className="flex justify-between items-center mb-2">
-              <h2 className="text-xl font-semibold">{test.title}</h2>
+          <div key={test.id} className="bg-white p-4 sm:p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+            <div className="flex flex-col sm:flex-row justify-between items-start gap-2 mb-2">
+              <h2 className="text-lg sm:text-xl font-semibold flex-1 min-w-0">{test.title}</h2>
               <Link href={`/cbt/hasil?id=${test.id}`}>
-                <button className="bg-green-500 text-white px-3 py-1 rounded-md hover:bg-green-600 transition text-sm">
+                <button className="bg-green-500 text-white px-3 py-1 rounded-md hover:bg-green-600 transition text-sm whitespace-nowrap">
                   View Result
                 </button>
               </Link>
             </div>
-            <p className="text-gray-600 mb-4">{test.description}</p>
+            <p className="text-gray-600 mb-4 text-sm sm:text-base">{test.description}</p>
             <Link href={`/cbt/${test.id}`}>
               <button className="w-full bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition">
                 Start Test

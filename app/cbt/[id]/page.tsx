@@ -371,27 +371,28 @@ export default function HalamanCBT() {
     );
 
   return (
-    <div className="min-h-screen bg-gray-100 flex justify-center py-8 px-4">
-      <div className="w-[900px] bg-white rounded-3xl shadow-md border border-gray-200 overflow-hidden">
+    <div className="min-h-screen bg-gray-100 flex justify-center py-4 sm:py-8 px-2 sm:px-4">
+      <div className="w-full max-w-4xl bg-white rounded-2xl sm:rounded-3xl shadow-md border border-gray-200 overflow-hidden">
         {/* HEADER (styled to match design) */}
-        <div className="px-6 py-6">
-          <div className="bg-blue-50 border border-blue-200 rounded-2xl p-4 flex items-center justify-between gap-4">
-            <div className="flex items-center gap-4">
-              <div className="w-12 h-12 rounded-full bg-[#FFB28A] flex items-center justify-center text-white text-xl font-bold">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" viewBox="0 0 24 24" fill="currentColor"><path d="M19 2H8c-1.1 0-2 .9-2 2v2H5a2 2 0 00-2 2v11a2 2 0 002 2h14a2 2 0 002-2V4a2 2 0 00-2-2zM8 6h9v3H8z"/></svg>
+        <div className="px-4 sm:px-6 py-4 sm:py-6">
+          <div className="bg-blue-50 border border-blue-200 rounded-xl sm:rounded-2xl p-3 sm:p-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-4">
+            <div className="flex items-center gap-3 sm:gap-4 min-w-0 flex-1">
+              <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-[#FFB28A] flex items-center justify-center text-white text-lg sm:text-xl font-bold flex-shrink-0">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 sm:h-6 sm:w-6" viewBox="0 0 24 24" fill="currentColor"><path d="M19 2H8c-1.1 0-2 .9-2 2v2H5a2 2 0 00-2 2v11a2 2 0 002 2h14a2 2 0 002-2V4a2 2 0 00-2-2zM8 6h9v3H8z"/></svg>
               </div>
-              <div className="min-w-0">
-                <h2 className="text-lg font-semibold text-gray-900 truncate">{testMetadata?.title || 'Judul Ujian'}</h2>
+              <div className="min-w-0 flex-1">
+                <h2 className="text-base sm:text-lg font-semibold text-gray-900 truncate">{testMetadata?.title || 'Judul Ujian'}</h2>
                 <p className="text-sm text-gray-700 truncate mt-1">{testMetadata?.description || 'Deskripsi singkat ujian'}</p>
               </div>
             </div>
 
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-2 sm:gap-3 w-full sm:w-auto">
               <button
                 onClick={() => setModalOpen(true)}
-                className="flex items-center gap-2 px-4 py-2 rounded-full bg-[#FFEDD9] text-[#FF661F] text-sm font-semibold hover:bg-[#FFDCC4] transition"
+                className="flex items-center gap-2 px-3 sm:px-4 py-2 rounded-full bg-[#FFEDD9] text-[#FF661F] text-sm font-semibold hover:bg-[#FFDCC4] transition whitespace-nowrap"
               >
-                <span>Daftar Soal</span>
+                <span className="hidden sm:inline">Daftar Soal</span>
+                <span className="sm:hidden">Soal</span>
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" /></svg>
               </button>
             </div>
@@ -399,7 +400,7 @@ export default function HalamanCBT() {
         </div>
 
         {/* ISI */}
-        <div className="p-8">
+        <div className="p-4 sm:p-6 lg:p-8">
           <QuestionCard
             question={questions[current]}
             questionNumber={current + 1}
@@ -409,63 +410,68 @@ export default function HalamanCBT() {
           />
 
           {/* NAVIGASI */}
-          <div className="flex justify-between items-center mt-10">
+          <div className="flex flex-col sm:flex-row justify-between items-stretch sm:items-center gap-3 sm:gap-0 mt-8 sm:mt-10">
             <button
               onClick={() => setCurrent((c) => c - 1)}
               disabled={current === 0}
-              className="bg-gray-200 text-gray-700 font-semibold px-6 py-2 rounded-full hover:bg-gray-300 transition disabled:bg-gray-100 disabled:text-gray-400 disabled:cursor-not-allowed"
+              className="bg-gray-200 text-gray-700 font-semibold px-4 sm:px-6 py-3 sm:py-2 rounded-full hover:bg-gray-300 transition disabled:bg-gray-100 disabled:text-gray-400 disabled:cursor-not-allowed text-sm sm:text-base order-2 sm:order-1"
             >
               ‹ Sebelumnya
             </button>
 
-            {!attemptId ? (
-              <button
-                onClick={startAttempt}
-                disabled={starting}
-                className={`px-8 py-2 rounded-full font-semibold transition ${
-                  starting
-                    ? "bg-orange-200 text-white cursor-wait"
-                    : "bg-[#FF661F] text-white hover:bg-[#E6540F]"
-                }`}
-                // This button is only for starting, so it doesn't navigate
-              >
-                {starting ? "Memulai…" : "Mulai CBT"}
-              </button>
-            ) : current < questions.length - 1 ? (
-              <button
-                onClick={() => setCurrent((c) => c + 1)}
-                disabled={submitting}
-                className={`px-8 py-2 rounded-full font-semibold transition ${
-                  submitting
-                    ? "bg-orange-200 text-white cursor-wait"
-                    : "bg-[#FF661F] text-white hover:bg-[#E6540F]"
-                }`}
-              >
-                {submitting ? "Menyimpan…" : "Selanjutnya ›"}
-              </button>
-            ) : (
-              <button
-                onClick={finishAttempt}
-                disabled={submitting}
-                className={`px-8 py-2 rounded-full font-semibold transition ${
-                  submitting
-                    ? "bg-green-300 text-white cursor-wait"
-                    : "bg-[#24B26B] text-white hover:bg-[#1A8E56]"
-                }`}
-              >
-                {submitting ? "Menyimpan…" : "Kumpulkan"}
-              </button>
-            )}
+            <div className="flex-1 sm:flex-none order-1 sm:order-2">
+              {!attemptId ? (
+                <button
+                  onClick={startAttempt}
+                  disabled={starting}
+                  className={`w-full px-6 sm:px-8 py-3 sm:py-2 rounded-full font-semibold transition text-sm sm:text-base ${
+                    starting
+                      ? "bg-orange-200 text-white cursor-wait"
+                      : "bg-[#FF661F] text-white hover:bg-[#E6540F]"
+                  }`}
+                >
+                  {starting ? "Memulai…" : "Mulai CBT"}
+                </button>
+              ) : current < questions.length - 1 ? (
+                <button
+                  onClick={() => setCurrent((c) => c + 1)}
+                  disabled={submitting}
+                  className={`w-full px-6 sm:px-8 py-3 sm:py-2 rounded-full font-semibold transition text-sm sm:text-base ${
+                    submitting
+                      ? "bg-orange-200 text-white cursor-wait"
+                      : "bg-[#FF661F] text-white hover:bg-[#E6540F]"
+                  }`}
+                >
+                  {submitting ? "Menyimpan…" : "Selanjutnya ›"}
+                </button>
+              ) : (
+                <button
+                  onClick={finishAttempt}
+                  disabled={submitting}
+                  className={`w-full px-6 sm:px-8 py-3 sm:py-2 rounded-full font-semibold transition text-sm sm:text-base ${
+                    submitting
+                      ? "bg-green-300 text-white cursor-wait"
+                      : "bg-[#24B26B] text-white hover:bg-[#1A8E56]"
+                  }`}
+                >
+                  {submitting ? "Menyimpan…" : "Kumpulkan"}
+                </button>
+              )}
+            </div>
+
+            <div className="hidden sm:block order-3">
+              {/* Spacer for desktop layout */}
+            </div>
           </div>
 
           {/* ERROR / TIMER / AUTO-SAVE STATUS */}
           {errorMsg && (
-            <div className="mt-5 text-red-600 font-medium">{errorMsg}</div>
+            <div className="mt-4 sm:mt-5 text-red-600 font-medium text-sm sm:text-base text-center sm:text-left">{errorMsg}</div>
           )}
           
           {/* Auto-save status notification */}
           {attemptId && autoSaveStatus !== 'idle' && (
-            <div className={`mt-4 px-4 py-2 rounded-lg text-sm font-medium flex items-center gap-2 ${
+            <div className={`mt-4 px-3 sm:px-4 py-2 sm:py-3 rounded-lg text-sm font-medium flex items-center justify-center sm:justify-start gap-2 ${
               autoSaveStatus === 'saving' 
                 ? 'bg-blue-50 text-blue-700 border border-blue-200'
                 : autoSaveStatus === 'success'
@@ -475,15 +481,15 @@ export default function HalamanCBT() {
               {autoSaveStatus === 'saving' && (
                 <>
                   <div className="w-4 h-4 border-2 border-blue-600 border-t-transparent rounded-full animate-spin"></div>
-                  Menyimpan jawaban...
+                  <span>Menyimpan jawaban...</span>
                 </>
               )}
               {autoSaveStatus === 'success' && (
                 <>
-                  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                  <svg className="w-4 h-4 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                   </svg>
-                  Jawaban tersimpan
+                  <span>Jawaban tersimpan</span>
                   {lastAutoSave && (
                     <span className="text-xs opacity-75">
                       ({lastAutoSave.toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit' })})
@@ -493,17 +499,17 @@ export default function HalamanCBT() {
               )}
               {autoSaveStatus === 'error' && (
                 <>
-                  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                  <svg className="w-4 h-4 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
                   </svg>
-                  Gagal menyimpan - data tersimpan di browser
+                  <span>Gagal menyimpan - data tersimpan di browser</span>
                 </>
               )}
             </div>
           )}
           
           {attemptId && testMetadata?.duration_minutes && (
-            <div className="mt-4 text-sm text-gray-700">
+            <div className="mt-4 text-sm text-gray-700 text-center sm:text-left">
               Durasi tes: {testMetadata.duration_minutes} menit
             </div>
           )}

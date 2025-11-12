@@ -16,8 +16,8 @@ export default function DaftarSoalModal({ open, total, answered = new Set(), act
   const items = Array.from({ length: total }, (_, i) => i + 1);
 
   return (
-    <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50" role="dialog" aria-modal="true">
-      <div className="bg-white rounded-2xl p-5 w-[360px] shadow-lg border border-gray-200">
+    <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4" role="dialog" aria-modal="true">
+      <div className="bg-white rounded-2xl p-4 sm:p-5 w-full max-w-sm shadow-lg border border-gray-200">
         <div className="flex items-start justify-between mb-4">
           <h3 className="text-base font-semibold text-gray-800">Daftar Soal</h3>
           <button onClick={onClose} aria-label="Tutup" className="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center text-gray-600 hover:bg-gray-200">
@@ -25,7 +25,7 @@ export default function DaftarSoalModal({ open, total, answered = new Set(), act
           </button>
         </div>
 
-        <div className="grid grid-cols-5 gap-3 mb-4">
+        <div className="grid grid-cols-5 gap-2 sm:gap-3 mb-4">
           {items.map((n, idx) => {
             const isAnswered = answered.has(idx);
             const isActive = idx === activeIndex;
@@ -34,7 +34,7 @@ export default function DaftarSoalModal({ open, total, answered = new Set(), act
                 key={n}
                 onClick={() => onJump && onJump(idx)}
                 aria-current={isActive}
-                className={`w-11 h-11 rounded-md flex items-center justify-center text-sm font-semibold transition-shadow focus:outline-none ${isActive ? 'bg-[#FF661F] text-white shadow-md' : isAnswered ? 'bg-[#FFEDD9] text-[#C24A12] border border-[#EED6C3]' : 'bg-gray-200 text-gray-700'}`}
+                className={`w-10 h-10 sm:w-11 sm:h-11 rounded-md flex items-center justify-center text-sm font-semibold transition-shadow focus:outline-none ${isActive ? 'bg-[#FF661F] text-white shadow-md' : isAnswered ? 'bg-[#FFEDD9] text-[#C24A12] border border-[#EED6C3]' : 'bg-gray-200 text-gray-700'}`}
               >
                 {n}
               </button>
@@ -42,7 +42,7 @@ export default function DaftarSoalModal({ open, total, answered = new Set(), act
           })}
         </div>
 
-        <div className="flex items-center justify-between text-xs text-gray-600">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 sm:gap-0 text-xs text-gray-600">
           <div className="flex items-center gap-2">
             <span className="inline-block w-2 h-2 rounded-full bg-[#FF661F]"></span>
             <span>Sudah dikerjakan</span>
